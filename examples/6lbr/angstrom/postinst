@@ -1,0 +1,12 @@
+#!/bin/sh
+if test "x$D" != "x"; then
+	OPT="-r $D"
+else
+	OPT="-s"
+fi
+
+if ! test -e $D/etc/6lbr/6lbr.conf; then
+  cp $D/etc/6lbr/6lbr.conf.beaglebone $D/etc/6lbr/6lbr.conf
+fi
+
+update-rc.d $OPT 6lbr defaults

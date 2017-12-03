@@ -1,0 +1,9 @@
+bin
+bin_*
+tools/nvm_tool
+6lbr-*-ipk
+6lbr-*-deb
+*.ipk
+*.deb
+*.zip
+plugins/*/*.so

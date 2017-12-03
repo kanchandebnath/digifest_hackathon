@@ -1,0 +1,39 @@
+#ifndef __hdc1080_h__
+#define __hdc1080_h__
+
+#include "i2c.h"
+
+typedef enum 
+{
+  OK       = 0x00,
+  ERROR    = 0x01,
+  BUSY     = 0x02,
+  TIMEOUT  = 0x03
+} HAL_StatusTypeDef;
+
+/* Register addresses */
+#define HDC1080_TEMPERATURE		0x00
+#define HDC1080_HUMIDITY 		0x01
+#define HDC1080_CONFIG			0x02
+#define HDC1080_SERIAL_ID1		0xfb
+#define HDC1080_SERIAL_ID2		0xfc
+#define HDC1080_SERIAL_ID3		0xfd
+#define HDC1080_ID_MANU			0xfe
+#define HDC1080_ID_DEV			0xff
+
+#define HDC1080_RH_RES_14		0x00
+#define HDC1080_RH_RES_11		0x01
+#define HDC1080_RH_RES8			0x02
+
+#define HDC1080_T_RES_14		0x00
+#define HDC1080_T_RES_11		0x01 
+
+#define HDC1080_ADDR			0x40
+#define HDC1080_HEATER_ON		1
+
+HAL_StatusTypeDef hdc1080_read_reg(uint8_t reg, uint16_t *val);
+HAL_StatusTypeDef hdc1080_write_reg(uint8_t reg, uint16_t val);
+HAL_StatusTypeDef hdc1080_measure(uint8_t temp_res, uint8_t humidres, uint8_t heater,uint8_t *bat_stat, double *temperature,double *humidity);
+HAL_StatusTypeDef hdc1080_get_device_id(uint64_t *serial, uint16_t *manuf, uint16_t *device);
+
+#endif

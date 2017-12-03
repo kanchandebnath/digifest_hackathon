@@ -1,0 +1,4 @@
+ifneq ($(WITH_COAPSERVER),0)
+RESOURCES+= battery radio-lqi radio-rssi button  button-left button-right button-up button-down button-select led-red led-green led-blue cc2538_temp_sensor vdd3_sensor ambient_temperature_sensor humidity_sensor
+PROJECT_SOURCEFILES+=contiki-resources.c
+endif

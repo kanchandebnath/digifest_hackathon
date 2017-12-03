@@ -1,0 +1,785 @@
+rm -f *~ *core core *.srec \
+	*.lst *.map \
+	*.cprg *.bin *.data contiki*.a *.firmware core-labels.S *.ihex *.ini \
+	*.ce *.co
+rm -rf ./dyn_resources/* ./dynamic-resources.mk *.cc2538dk symbols.c symbols.h *.d *.elf *.hex
+rm -rf obj_cc2538dk
+mkdir -p ./dyn_resources
+./tools/coap/mk_resource.sh ./tools/coap/ipso-app-fw-resource-template.h battery radio-lqi radio-rssi button  button-left button-right button-up button-down button-select led-red led-green led-blue cc2538_temp_sensor vdd3_sensor ambient_temperature_sensor humidity_sensor
+mv -f battery-resource.h radio-lqi-resource.h radio-rssi-resource.h button-resource.h button-left-resource.h button-right-resource.h button-up-resource.h button-down-resource.h button-select-resource.h led-red-resource.h led-green-resource.h led-blue-resource.h cc2538_temp_sensor-resource.h vdd3_sensor-resource.h ambient_temperature_sensor-resource.h humidity_sensor-resource.h ./dyn_resources/
+mkdir obj_cc2538dk
+  CC        ../../cpu/cc2538/./ieee-addr.c
+  CC        ../../cpu/cc2538/cc2538.lds
+  CC        ../../cpu/cc2538/./startup-gcc.c
+  CC        ../../apps/er-coap/er-coap.c
+  CC        ../../apps/er-coap/er-coap-engine.c
+  CC        ../../apps/er-coap/er-coap-transactions.c
+  CC        ../../apps/er-coap/er-coap-observe.c
+  CC        ../../apps/er-coap/er-coap-separate.c
+  CC        ../../apps/er-coap/er-coap-res-well-known-core.c
+  CC        ../../apps/er-coap/er-coap-block1.c
+  CC        ../../apps/er-coap/er-coap-observe-client.c
+  CC        ../../apps/er-coap/er-coap-udp.c
+  CC        ../../apps/rest-engine/rest-engine.c
+  CC        ./apps/coap/coap-server.c
+  CC        ./apps/coap/block-transfer.c
+  CC        ./apps/coap/coap-common.c
+  CC        ./apps/coap/coap-push.c
+  CC        ./apps/coap/core-interface.c
+  CC        ./apps/coap/coap-binding.c
+  CC        ./apps/coap/coap-linked-batch.c
+  CC        ./apps/coap/rd-client.c
+  CC        ./apps/coap/rest-types/rest-type-text.c
+  CC        ./apps/coap/rest-types/rest-type-json.c
+  CC        ./apps/coap/rest-types/rest-type-senml.c
+  CC        ./apps/coap/rest-types/rest-type-xml.c
+  CC        ./apps/ipso-app-fw/ipso-app-fw.c
+  CC        ./apps/ipso-app-fw/device-resource.c
+rm obj_cc2538dk/startup-gcc.o
+rm -f *~ *core core *.srec \
+	*.lst *.map \
+	*.cprg *.bin *.data contiki*.a *.firmware core-labels.S *.ihex *.ini \
+	*.ce *.co
+rm -rf ./dyn_resources/* ./dynamic-resources.mk *.cc2538dk symbols.c symbols.h *.d *.elf *.hex
+rm -rf obj_cc2538dk
+mkdir -p ./dyn_resources
+./tools/coap/mk_resource.sh ./tools/coap/ipso-app-fw-resource-template.h battery radio-lqi radio-rssi button  button-left button-right button-up button-down button-select led-red led-green led-blue cc2538_temp_sensor vdd3_sensor ambient_temperature_sensor humidity_sensor
+mv -f battery-resource.h radio-lqi-resource.h radio-rssi-resource.h button-resource.h button-left-resource.h button-right-resource.h button-up-resource.h button-down-resource.h button-select-resource.h led-red-resource.h led-green-resource.h led-blue-resource.h cc2538_temp_sensor-resource.h vdd3_sensor-resource.h ambient_temperature_sensor-resource.h humidity_sensor-resource.h ./dyn_resources/
+mkdir obj_cc2538dk
+  CC        ../../cpu/cc2538/./ieee-addr.c
+  CC        ../../cpu/cc2538/cc2538.lds
+  CC        ../../cpu/cc2538/./startup-gcc.c
+  CC        ../../apps/er-coap/er-coap.c
+  CC        ../../apps/er-coap/er-coap-engine.c
+  CC        ../../apps/er-coap/er-coap-transactions.c
+  CC        ../../apps/er-coap/er-coap-observe.c
+  CC        ../../apps/er-coap/er-coap-separate.c
+  CC        ../../apps/er-coap/er-coap-res-well-known-core.c
+  CC        ../../apps/er-coap/er-coap-block1.c
+  CC        ../../apps/er-coap/er-coap-observe-client.c
+  CC        ../../apps/er-coap/er-coap-udp.c
+  CC        ../../apps/rest-engine/rest-engine.c
+  CC        ./apps/coap/coap-server.c
+  CC        ./apps/coap/block-transfer.c
+  CC        ./apps/coap/coap-common.c
+  CC        ./apps/coap/coap-push.c
+  CC        ./apps/coap/core-interface.c
+  CC        ./apps/coap/coap-binding.c
+  CC        ./apps/coap/coap-linked-batch.c
+  CC        ./apps/coap/rd-client.c
+  CC        ./apps/coap/rest-types/rest-type-text.c
+  CC        ./apps/coap/rest-types/rest-type-json.c
+  CC        ./apps/coap/rest-types/rest-type-senml.c
+  CC        ./apps/coap/rest-types/rest-type-xml.c
+  CC        ./apps/ipso-app-fw/ipso-app-fw.c
+  CC        ./apps/ipso-app-fw/device-resource.c
+./apps/ipso-app-fw/device-resource.c: In function 'device_name_set':
+./apps/ipso-app-fw/device-resource.c:220:35: warning: pointer targets in passing argument 2 of 'strcpy' differ in signedness [-Wpointer-sign]
+     strcpy(RES_DEVICE_NAME_VALUE, name);
+                                   ^
+In file included from /usr/arm-none-eabi/include/stdio.h:29:0,
+                 from ./apps/coap/coap-common.h:39,
+                 from ./apps/ipso-app-fw/device-resource.c:36:
+/usr/arm-none-eabi/include/string.h:30:8: note: expected 'const char *' but argument is of type 'const uint8_t *'
+ char  *_EXFUN(strcpy,(char *__restrict, const char *__restrict));
+        ^
+./apps/ipso-app-fw/device-resource.c: In function 'device_custom_node_edit_set':
+./apps/ipso-app-fw/device-resource.c:301:6: error: 'custom_node_edit' undeclared (first use in this function)
+      custom_node_edit=(node_edit*)value;
+      ^
+./apps/ipso-app-fw/device-resource.c:301:6: note: each undeclared identifier is reported only once for each function it appears in
+In file included from ./apps/ipso-app-fw/device-resource.c:36:0:
+./apps/ipso-app-fw/device-resource.c: In function 'resource_device_name_put_handler':
+./apps/ipso-app-fw/device-resource.c:462:70: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_STRING, "Device_Name", RES_DEVICE_NAME_VALUE, device_name_set) 
+                                                                      ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:113:39: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_DEVICE_NAME_RESOURCE REST_ACTUATOR
+                                       ^
+./apps/ipso-app-fw/device-resource.c:457:1: note: in expansion of macro 'REST_RES_DEVICE_NAME_RESOURCE'
+ REST_RES_DEVICE_NAME_RESOURCE(device_name,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(const uint8_t *, int)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_NODE_ID_put_handler':
+./apps/ipso-app-fw/device-resource.c:469:67: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_UNSIGNED_INT, "Node_ID", RES_NODE_ID_VALUE,device_node_id_set)
+                                                                   ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:149:35: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_NODE_ID_RESOURCE REST_ACTUATOR
+                                   ^
+./apps/ipso-app-fw/device-resource.c:465:1: note: in expansion of macro 'REST_RES_NODE_ID_RESOURCE'
+ REST_RES_NODE_ID_RESOURCE(NODE_ID,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(uint16_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_ZONE_ID_put_handler':
+./apps/ipso-app-fw/device-resource.c:476:67: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_UNSIGNED_INT, "Zone_ID", RES_ZONE_ID_VALUE,device_zone_id_set)
+                                                                   ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:132:35: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_ZONE_ID_RESOURCE REST_ACTUATOR
+                                   ^
+./apps/ipso-app-fw/device-resource.c:472:1: note: in expansion of macro 'REST_RES_ZONE_ID_RESOURCE'
+ REST_RES_ZONE_ID_RESOURCE(ZONE_ID,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(uint16_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_PAN_ID_put_handler':
+./apps/ipso-app-fw/device-resource.c:483:65: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_UNSIGNED_INT, "PAN_ID", RES_PAN_ID_VALUE,device_pan_id_set)
+                                                                 ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:141:34: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_PAN_ID_RESOURCE REST_ACTUATOR
+                                  ^
+./apps/ipso-app-fw/device-resource.c:479:1: note: in expansion of macro 'REST_RES_PAN_ID_RESOURCE'
+ REST_RES_PAN_ID_RESOURCE(PAN_ID,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(uint16_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_node_latitude_put_handler':
+./apps/ipso-app-fw/device-resource.c:496:74: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_STRING, "Node_Latitude", RES_NODE_LATITUDE_VALUE, device_node_latitude_set)
+                                                                          ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:157:41: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_NODE_LATITUDE_RESOURCE REST_ACTUATOR
+                                         ^
+./apps/ipso-app-fw/device-resource.c:492:1: note: in expansion of macro 'REST_RES_NODE_LATITUDE_RESOURCE'
+ REST_RES_NODE_LATITUDE_RESOURCE(node_latitude,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(char *, uint8_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_node_longitude_put_handler':
+./apps/ipso-app-fw/device-resource.c:503:76: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_STRING, "Node_Longitude", RES_NODE_LONGITUDE_VALUE, device_node_longitude_set)
+                                                                            ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:165:42: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_NODE_LONGITUDE_RESOURCE REST_ACTUATOR
+                                          ^
+./apps/ipso-app-fw/device-resource.c:499:1: note: in expansion of macro 'REST_RES_NODE_LONGITUDE_RESOURCE'
+ REST_RES_NODE_LONGITUDE_RESOURCE(node_longitude,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(char *, uint8_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_custom_command_put_handler':
+./apps/ipso-app-fw/device-resource.c:510:87: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_UNSIGNED_INT, "Custom_Command", RES_NODE_CUSTOM_COMMAND_VALUE, device_custom_command_set)
+                                                                                       ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:175:47: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_NODE_CUSTOM_COMMAND_RESOURCE REST_ACTUATOR
+                                               ^
+./apps/ipso-app-fw/device-resource.c:506:1: note: in expansion of macro 'REST_RES_NODE_CUSTOM_COMMAND_RESOURCE'
+ REST_RES_NODE_CUSTOM_COMMAND_RESOURCE(custom_command,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(uint32_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_custom_node_edit_put_handler':
+./apps/ipso-app-fw/device-resource.c:517:91: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_UNSIGNED_INT, "Custom_Node_Edit", RES_NODE_CUSTOM_NODE_EDIT_VALUE, device_custom_node_edit_set)
+                                                                                           ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:184:49: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_NODE_CUSTOM_NODE_EDIT_RESOURCE REST_ACTUATOR
+                                                 ^
+./apps/ipso-app-fw/device-resource.c:513:1: note: in expansion of macro 'REST_RES_NODE_CUSTOM_NODE_EDIT_RESOURCE'
+ REST_RES_NODE_CUSTOM_NODE_EDIT_RESOURCE(custom_node_edit,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(uint32_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+make: *** [obj_cc2538dk/device-resource.o] Error 1
+rm obj_cc2538dk/startup-gcc.o
+rm -f *~ *core core *.srec \
+	*.lst *.map \
+	*.cprg *.bin *.data contiki*.a *.firmware core-labels.S *.ihex *.ini \
+	*.ce *.co
+rm -rf ./dyn_resources/* ./dynamic-resources.mk *.cc2538dk symbols.c symbols.h *.d *.elf *.hex
+rm -rf obj_cc2538dk
+mkdir -p ./dyn_resources
+./tools/coap/mk_resource.sh ./tools/coap/ipso-app-fw-resource-template.h battery radio-lqi radio-rssi button  button-left button-right button-up button-down button-select led-red led-green led-blue cc2538_temp_sensor vdd3_sensor ambient_temperature_sensor humidity_sensor
+mv -f battery-resource.h radio-lqi-resource.h radio-rssi-resource.h button-resource.h button-left-resource.h button-right-resource.h button-up-resource.h button-down-resource.h button-select-resource.h led-red-resource.h led-green-resource.h led-blue-resource.h cc2538_temp_sensor-resource.h vdd3_sensor-resource.h ambient_temperature_sensor-resource.h humidity_sensor-resource.h ./dyn_resources/
+mkdir obj_cc2538dk
+  CC        ../../cpu/cc2538/./ieee-addr.c
+  CC        ../../cpu/cc2538/cc2538.lds
+  CC        ../../cpu/cc2538/./startup-gcc.c
+  CC        ../../apps/er-coap/er-coap.c
+  CC        ../../apps/er-coap/er-coap-engine.c
+  CC        ../../apps/er-coap/er-coap-transactions.c
+  CC        ../../apps/er-coap/er-coap-observe.c
+  CC        ../../apps/er-coap/er-coap-separate.c
+  CC        ../../apps/er-coap/er-coap-res-well-known-core.c
+  CC        ../../apps/er-coap/er-coap-block1.c
+  CC        ../../apps/er-coap/er-coap-observe-client.c
+  CC        ../../apps/er-coap/er-coap-udp.c
+  CC        ../../apps/rest-engine/rest-engine.c
+  CC        ./apps/coap/coap-server.c
+  CC        ./apps/coap/block-transfer.c
+  CC        ./apps/coap/coap-common.c
+  CC        ./apps/coap/coap-push.c
+  CC        ./apps/coap/core-interface.c
+  CC        ./apps/coap/coap-binding.c
+  CC        ./apps/coap/coap-linked-batch.c
+  CC        ./apps/coap/rd-client.c
+  CC        ./apps/coap/rest-types/rest-type-text.c
+  CC        ./apps/coap/rest-types/rest-type-json.c
+  CC        ./apps/coap/rest-types/rest-type-senml.c
+  CC        ./apps/coap/rest-types/rest-type-xml.c
+  CC        ./apps/ipso-app-fw/ipso-app-fw.c
+  CC        ./apps/ipso-app-fw/device-resource.c
+./apps/ipso-app-fw/device-resource.c: In function 'device_name_set':
+./apps/ipso-app-fw/device-resource.c:221:35: warning: pointer targets in passing argument 2 of 'strcpy' differ in signedness [-Wpointer-sign]
+     strcpy(RES_DEVICE_NAME_VALUE, name);
+                                   ^
+In file included from /usr/arm-none-eabi/include/stdio.h:29:0,
+                 from ./apps/coap/coap-common.h:39,
+                 from ./apps/ipso-app-fw/device-resource.c:36:
+/usr/arm-none-eabi/include/string.h:30:8: note: expected 'const char *' but argument is of type 'const uint8_t *'
+ char  *_EXFUN(strcpy,(char *__restrict, const char *__restrict));
+        ^
+./apps/ipso-app-fw/device-resource.c: In function 'device_custom_node_edit_set':
+./apps/ipso-app-fw/device-resource.c:302:22: error: incompatible types when assigning to type 'node_edit' from type 'struct node_edit *'
+      custom_node_edit=(node_edit*)value;
+                      ^
+./apps/ipso-app-fw/device-resource.c:310:6: warning: format '%d' expects argument of type 'int', but argument 2 has type 'char *' [-Wformat=]
+      printf("Custom command Node Edit Device Name Value =%d\n",custom_node_edit.device_name);
+      ^
+./apps/ipso-app-fw/device-resource.c:310:6: warning: format '%d' expects argument of type 'int', but argument 2 has type 'char *' [-Wformat=]
+In file included from ./apps/ipso-app-fw/device-resource.c:36:0:
+./apps/ipso-app-fw/device-resource.c: In function 'resource_device_name_put_handler':
+./apps/ipso-app-fw/device-resource.c:463:70: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_STRING, "Device_Name", RES_DEVICE_NAME_VALUE, device_name_set) 
+                                                                      ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:114:39: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_DEVICE_NAME_RESOURCE REST_ACTUATOR
+                                       ^
+./apps/ipso-app-fw/device-resource.c:458:1: note: in expansion of macro 'REST_RES_DEVICE_NAME_RESOURCE'
+ REST_RES_DEVICE_NAME_RESOURCE(device_name,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(const uint8_t *, int)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_NODE_ID_put_handler':
+./apps/ipso-app-fw/device-resource.c:470:67: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_UNSIGNED_INT, "Node_ID", RES_NODE_ID_VALUE,device_node_id_set)
+                                                                   ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:150:35: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_NODE_ID_RESOURCE REST_ACTUATOR
+                                   ^
+./apps/ipso-app-fw/device-resource.c:466:1: note: in expansion of macro 'REST_RES_NODE_ID_RESOURCE'
+ REST_RES_NODE_ID_RESOURCE(NODE_ID,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(uint16_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_ZONE_ID_put_handler':
+./apps/ipso-app-fw/device-resource.c:477:67: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_UNSIGNED_INT, "Zone_ID", RES_ZONE_ID_VALUE,device_zone_id_set)
+                                                                   ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:133:35: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_ZONE_ID_RESOURCE REST_ACTUATOR
+                                   ^
+./apps/ipso-app-fw/device-resource.c:473:1: note: in expansion of macro 'REST_RES_ZONE_ID_RESOURCE'
+ REST_RES_ZONE_ID_RESOURCE(ZONE_ID,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(uint16_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_PAN_ID_put_handler':
+./apps/ipso-app-fw/device-resource.c:484:65: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_UNSIGNED_INT, "PAN_ID", RES_PAN_ID_VALUE,device_pan_id_set)
+                                                                 ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:142:34: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_PAN_ID_RESOURCE REST_ACTUATOR
+                                  ^
+./apps/ipso-app-fw/device-resource.c:480:1: note: in expansion of macro 'REST_RES_PAN_ID_RESOURCE'
+ REST_RES_PAN_ID_RESOURCE(PAN_ID,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(uint16_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_node_latitude_put_handler':
+./apps/ipso-app-fw/device-resource.c:497:74: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_STRING, "Node_Latitude", RES_NODE_LATITUDE_VALUE, device_node_latitude_set)
+                                                                          ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:158:41: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_NODE_LATITUDE_RESOURCE REST_ACTUATOR
+                                         ^
+./apps/ipso-app-fw/device-resource.c:493:1: note: in expansion of macro 'REST_RES_NODE_LATITUDE_RESOURCE'
+ REST_RES_NODE_LATITUDE_RESOURCE(node_latitude,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(char *, uint8_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_node_longitude_put_handler':
+./apps/ipso-app-fw/device-resource.c:504:76: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_STRING, "Node_Longitude", RES_NODE_LONGITUDE_VALUE, device_node_longitude_set)
+                                                                            ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:166:42: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_NODE_LONGITUDE_RESOURCE REST_ACTUATOR
+                                          ^
+./apps/ipso-app-fw/device-resource.c:500:1: note: in expansion of macro 'REST_RES_NODE_LONGITUDE_RESOURCE'
+ REST_RES_NODE_LONGITUDE_RESOURCE(node_longitude,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(char *, uint8_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_custom_command_put_handler':
+./apps/ipso-app-fw/device-resource.c:511:87: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_UNSIGNED_INT, "Custom_Command", RES_NODE_CUSTOM_COMMAND_VALUE, device_custom_command_set)
+                                                                                       ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:176:47: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_NODE_CUSTOM_COMMAND_RESOURCE REST_ACTUATOR
+                                               ^
+./apps/ipso-app-fw/device-resource.c:507:1: note: in expansion of macro 'REST_RES_NODE_CUSTOM_COMMAND_RESOURCE'
+ REST_RES_NODE_CUSTOM_COMMAND_RESOURCE(custom_command,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(uint32_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_custom_node_edit_put_handler':
+./apps/ipso-app-fw/device-resource.c:518:91: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_UNSIGNED_INT, "Custom_Node_Edit", RES_NODE_CUSTOM_NODE_EDIT_VALUE, device_custom_node_edit_set)
+                                                                                           ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:185:49: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_NODE_CUSTOM_NODE_EDIT_RESOURCE REST_ACTUATOR
+                                                 ^
+./apps/ipso-app-fw/device-resource.c:514:1: note: in expansion of macro 'REST_RES_NODE_CUSTOM_NODE_EDIT_RESOURCE'
+ REST_RES_NODE_CUSTOM_NODE_EDIT_RESOURCE(custom_node_edit,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(uint32_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+make: *** [obj_cc2538dk/device-resource.o] Error 1
+rm obj_cc2538dk/startup-gcc.o
+rm -f *~ *core core *.srec \
+	*.lst *.map \
+	*.cprg *.bin *.data contiki*.a *.firmware core-labels.S *.ihex *.ini \
+	*.ce *.co
+rm -rf ./dyn_resources/* ./dynamic-resources.mk *.cc2538dk symbols.c symbols.h *.d *.elf *.hex
+rm -rf obj_cc2538dk
+mkdir -p ./dyn_resources
+./tools/coap/mk_resource.sh ./tools/coap/ipso-app-fw-resource-template.h battery radio-lqi radio-rssi button  button-left button-right button-up button-down button-select led-red led-green led-blue cc2538_temp_sensor vdd3_sensor ambient_temperature_sensor humidity_sensor
+mv -f battery-resource.h radio-lqi-resource.h radio-rssi-resource.h button-resource.h button-left-resource.h button-right-resource.h button-up-resource.h button-down-resource.h button-select-resource.h led-red-resource.h led-green-resource.h led-blue-resource.h cc2538_temp_sensor-resource.h vdd3_sensor-resource.h ambient_temperature_sensor-resource.h humidity_sensor-resource.h ./dyn_resources/
+mkdir obj_cc2538dk
+  CC        ../../cpu/cc2538/./ieee-addr.c
+  CC        ../../cpu/cc2538/cc2538.lds
+  CC        ../../cpu/cc2538/./startup-gcc.c
+  CC        ../../apps/er-coap/er-coap.c
+  CC        ../../apps/er-coap/er-coap-engine.c
+  CC        ../../apps/er-coap/er-coap-transactions.c
+  CC        ../../apps/er-coap/er-coap-observe.c
+  CC        ../../apps/er-coap/er-coap-separate.c
+  CC        ../../apps/er-coap/er-coap-res-well-known-core.c
+  CC        ../../apps/er-coap/er-coap-block1.c
+  CC        ../../apps/er-coap/er-coap-observe-client.c
+  CC        ../../apps/er-coap/er-coap-udp.c
+  CC        ../../apps/rest-engine/rest-engine.c
+  CC        ./apps/coap/coap-server.c
+  CC        ./apps/coap/block-transfer.c
+  CC        ./apps/coap/coap-common.c
+  CC        ./apps/coap/coap-push.c
+  CC        ./apps/coap/core-interface.c
+  CC        ./apps/coap/coap-binding.c
+  CC        ./apps/coap/coap-linked-batch.c
+  CC        ./apps/coap/rd-client.c
+  CC        ./apps/coap/rest-types/rest-type-text.c
+  CC        ./apps/coap/rest-types/rest-type-json.c
+  CC        ./apps/coap/rest-types/rest-type-senml.c
+  CC        ./apps/coap/rest-types/rest-type-xml.c
+  CC        ./apps/ipso-app-fw/ipso-app-fw.c
+  CC        ./apps/ipso-app-fw/device-resource.c
+./apps/ipso-app-fw/device-resource.c: In function 'device_name_set':
+./apps/ipso-app-fw/device-resource.c:221:35: warning: pointer targets in passing argument 2 of 'strcpy' differ in signedness [-Wpointer-sign]
+     strcpy(RES_DEVICE_NAME_VALUE, name);
+                                   ^
+In file included from /usr/arm-none-eabi/include/stdio.h:29:0,
+                 from ./apps/coap/coap-common.h:39,
+                 from ./apps/ipso-app-fw/device-resource.c:36:
+/usr/arm-none-eabi/include/string.h:30:8: note: expected 'const char *' but argument is of type 'const uint8_t *'
+ char  *_EXFUN(strcpy,(char *__restrict, const char *__restrict));
+        ^
+./apps/ipso-app-fw/device-resource.c: In function 'device_custom_node_edit_set':
+./apps/ipso-app-fw/device-resource.c:302:22: error: incompatible types when assigning to type 'node_edit' from type 'struct node_edit *'
+      custom_node_edit=(node_edit*)value;
+                      ^
+./apps/ipso-app-fw/device-resource.c:310:6: warning: format '%d' expects argument of type 'int', but argument 2 has type 'char *' [-Wformat=]
+      printf("Custom command Node Edit Device Name Value =%d\n",custom_node_edit.device_name);
+      ^
+./apps/ipso-app-fw/device-resource.c:310:6: warning: format '%d' expects argument of type 'int', but argument 2 has type 'char *' [-Wformat=]
+In file included from ./apps/ipso-app-fw/device-resource.c:36:0:
+./apps/ipso-app-fw/device-resource.c: In function 'resource_device_name_put_handler':
+./apps/ipso-app-fw/device-resource.c:463:70: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_STRING, "Device_Name", RES_DEVICE_NAME_VALUE, device_name_set) 
+                                                                      ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:114:39: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_DEVICE_NAME_RESOURCE REST_ACTUATOR
+                                       ^
+./apps/ipso-app-fw/device-resource.c:458:1: note: in expansion of macro 'REST_RES_DEVICE_NAME_RESOURCE'
+ REST_RES_DEVICE_NAME_RESOURCE(device_name,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(const uint8_t *, int)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_NODE_ID_put_handler':
+./apps/ipso-app-fw/device-resource.c:470:67: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_UNSIGNED_INT, "Node_ID", RES_NODE_ID_VALUE,device_node_id_set)
+                                                                   ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:150:35: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_NODE_ID_RESOURCE REST_ACTUATOR
+                                   ^
+./apps/ipso-app-fw/device-resource.c:466:1: note: in expansion of macro 'REST_RES_NODE_ID_RESOURCE'
+ REST_RES_NODE_ID_RESOURCE(NODE_ID,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(uint16_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_ZONE_ID_put_handler':
+./apps/ipso-app-fw/device-resource.c:477:67: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_UNSIGNED_INT, "Zone_ID", RES_ZONE_ID_VALUE,device_zone_id_set)
+                                                                   ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:133:35: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_ZONE_ID_RESOURCE REST_ACTUATOR
+                                   ^
+./apps/ipso-app-fw/device-resource.c:473:1: note: in expansion of macro 'REST_RES_ZONE_ID_RESOURCE'
+ REST_RES_ZONE_ID_RESOURCE(ZONE_ID,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(uint16_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_PAN_ID_put_handler':
+./apps/ipso-app-fw/device-resource.c:484:65: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_UNSIGNED_INT, "PAN_ID", RES_PAN_ID_VALUE,device_pan_id_set)
+                                                                 ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:142:34: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_PAN_ID_RESOURCE REST_ACTUATOR
+                                  ^
+./apps/ipso-app-fw/device-resource.c:480:1: note: in expansion of macro 'REST_RES_PAN_ID_RESOURCE'
+ REST_RES_PAN_ID_RESOURCE(PAN_ID,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(uint16_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_node_latitude_put_handler':
+./apps/ipso-app-fw/device-resource.c:497:74: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_STRING, "Node_Latitude", RES_NODE_LATITUDE_VALUE, device_node_latitude_set)
+                                                                          ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:158:41: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_NODE_LATITUDE_RESOURCE REST_ACTUATOR
+                                         ^
+./apps/ipso-app-fw/device-resource.c:493:1: note: in expansion of macro 'REST_RES_NODE_LATITUDE_RESOURCE'
+ REST_RES_NODE_LATITUDE_RESOURCE(node_latitude,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(char *, uint8_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_node_longitude_put_handler':
+./apps/ipso-app-fw/device-resource.c:504:76: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_STRING, "Node_Longitude", RES_NODE_LONGITUDE_VALUE, device_node_longitude_set)
+                                                                            ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:166:42: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_NODE_LONGITUDE_RESOURCE REST_ACTUATOR
+                                          ^
+./apps/ipso-app-fw/device-resource.c:500:1: note: in expansion of macro 'REST_RES_NODE_LONGITUDE_RESOURCE'
+ REST_RES_NODE_LONGITUDE_RESOURCE(node_longitude,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(char *, uint8_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_custom_command_put_handler':
+./apps/ipso-app-fw/device-resource.c:511:87: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_UNSIGNED_INT, "Custom_Command", RES_NODE_CUSTOM_COMMAND_VALUE, device_custom_command_set)
+                                                                                       ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:176:47: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_NODE_CUSTOM_COMMAND_RESOURCE REST_ACTUATOR
+                                               ^
+./apps/ipso-app-fw/device-resource.c:507:1: note: in expansion of macro 'REST_RES_NODE_CUSTOM_COMMAND_RESOURCE'
+ REST_RES_NODE_CUSTOM_COMMAND_RESOURCE(custom_command,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(uint32_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_custom_node_edit_put_handler':
+./apps/ipso-app-fw/device-resource.c:518:91: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_UNSIGNED_INT, "Custom_Node_Edit", RES_NODE_CUSTOM_NODE_EDIT_VALUE, device_custom_node_edit_set)
+                                                                                           ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:185:49: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_NODE_CUSTOM_NODE_EDIT_RESOURCE REST_ACTUATOR
+                                                 ^
+./apps/ipso-app-fw/device-resource.c:514:1: note: in expansion of macro 'REST_RES_NODE_CUSTOM_NODE_EDIT_RESOURCE'
+ REST_RES_NODE_CUSTOM_NODE_EDIT_RESOURCE(custom_node_edit,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(uint32_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+make: *** [obj_cc2538dk/device-resource.o] Error 1
+rm obj_cc2538dk/startup-gcc.o
+rm -f *~ *core core *.srec \
+	*.lst *.map \
+	*.cprg *.bin *.data contiki*.a *.firmware core-labels.S *.ihex *.ini \
+	*.ce *.co
+rm -rf ./dyn_resources/* ./dynamic-resources.mk *.cc2538dk symbols.c symbols.h *.d *.elf *.hex
+rm -rf obj_cc2538dk
+mkdir -p ./dyn_resources
+./tools/coap/mk_resource.sh ./tools/coap/ipso-app-fw-resource-template.h battery radio-lqi radio-rssi button  button-left button-right button-up button-down button-select led-red led-green led-blue cc2538_temp_sensor vdd3_sensor ambient_temperature_sensor humidity_sensor
+mv -f battery-resource.h radio-lqi-resource.h radio-rssi-resource.h button-resource.h button-left-resource.h button-right-resource.h button-up-resource.h button-down-resource.h button-select-resource.h led-red-resource.h led-green-resource.h led-blue-resource.h cc2538_temp_sensor-resource.h vdd3_sensor-resource.h ambient_temperature_sensor-resource.h humidity_sensor-resource.h ./dyn_resources/
+mkdir obj_cc2538dk
+  CC        ../../cpu/cc2538/./ieee-addr.c
+  CC        ../../cpu/cc2538/cc2538.lds
+  CC        ../../cpu/cc2538/./startup-gcc.c
+  CC        ../../apps/er-coap/er-coap.c
+  CC        ../../apps/er-coap/er-coap-engine.c
+  CC        ../../apps/er-coap/er-coap-transactions.c
+  CC        ../../apps/er-coap/er-coap-observe.c
+  CC        ../../apps/er-coap/er-coap-separate.c
+  CC        ../../apps/er-coap/er-coap-res-well-known-core.c
+  CC        ../../apps/er-coap/er-coap-block1.c
+  CC        ../../apps/er-coap/er-coap-observe-client.c
+  CC        ../../apps/er-coap/er-coap-udp.c
+  CC        ../../apps/rest-engine/rest-engine.c
+  CC        ./apps/coap/coap-server.c
+  CC        ./apps/coap/block-transfer.c
+  CC        ./apps/coap/coap-common.c
+  CC        ./apps/coap/coap-push.c
+  CC        ./apps/coap/core-interface.c
+  CC        ./apps/coap/coap-binding.c
+  CC        ./apps/coap/coap-linked-batch.c
+  CC        ./apps/coap/rd-client.c
+  CC        ./apps/coap/rest-types/rest-type-text.c
+  CC        ./apps/coap/rest-types/rest-type-json.c
+  CC        ./apps/coap/rest-types/rest-type-senml.c
+  CC        ./apps/coap/rest-types/rest-type-xml.c
+  CC        ./apps/ipso-app-fw/ipso-app-fw.c
+  CC        ./apps/ipso-app-fw/device-resource.c
+./apps/ipso-app-fw/device-resource.c: In function 'device_name_set':
+./apps/ipso-app-fw/device-resource.c:221:35: warning: pointer targets in passing argument 2 of 'strcpy' differ in signedness [-Wpointer-sign]
+     strcpy(RES_DEVICE_NAME_VALUE, name);
+                                   ^
+In file included from /usr/arm-none-eabi/include/stdio.h:29:0,
+                 from ./apps/coap/coap-common.h:39,
+                 from ./apps/ipso-app-fw/device-resource.c:36:
+/usr/arm-none-eabi/include/string.h:30:8: note: expected 'const char *' but argument is of type 'const uint8_t *'
+ char  *_EXFUN(strcpy,(char *__restrict, const char *__restrict));
+        ^
+./apps/ipso-app-fw/device-resource.c: In function 'device_custom_node_edit_set':
+./apps/ipso-app-fw/device-resource.c:302:6: warning: statement with no effect [-Wunused-value]
+      custom_node_edit node_edit;
+      ^
+./apps/ipso-app-fw/device-resource.c:302:23: error: expected ';' before 'node_edit'
+      custom_node_edit node_edit;
+                       ^
+./apps/ipso-app-fw/device-resource.c:304:22: error: incompatible types when assigning to type 'node_edit' from type 'struct node_edit *'
+      custom_node_edit=(node_edit*)value;
+                      ^
+./apps/ipso-app-fw/device-resource.c:312:6: warning: format '%d' expects argument of type 'int', but argument 2 has type 'char *' [-Wformat=]
+      printf("Custom command Node Edit Device Name Value =%d\n",custom_node_edit.device_name);
+      ^
+./apps/ipso-app-fw/device-resource.c:312:6: warning: format '%d' expects argument of type 'int', but argument 2 has type 'char *' [-Wformat=]
+In file included from ./apps/ipso-app-fw/device-resource.c:36:0:
+./apps/ipso-app-fw/device-resource.c: In function 'resource_device_name_put_handler':
+./apps/ipso-app-fw/device-resource.c:465:70: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_STRING, "Device_Name", RES_DEVICE_NAME_VALUE, device_name_set) 
+                                                                      ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:114:39: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_DEVICE_NAME_RESOURCE REST_ACTUATOR
+                                       ^
+./apps/ipso-app-fw/device-resource.c:460:1: note: in expansion of macro 'REST_RES_DEVICE_NAME_RESOURCE'
+ REST_RES_DEVICE_NAME_RESOURCE(device_name,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(const uint8_t *, int)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_NODE_ID_put_handler':
+./apps/ipso-app-fw/device-resource.c:472:67: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_UNSIGNED_INT, "Node_ID", RES_NODE_ID_VALUE,device_node_id_set)
+                                                                   ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:150:35: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_NODE_ID_RESOURCE REST_ACTUATOR
+                                   ^
+./apps/ipso-app-fw/device-resource.c:468:1: note: in expansion of macro 'REST_RES_NODE_ID_RESOURCE'
+ REST_RES_NODE_ID_RESOURCE(NODE_ID,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(uint16_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_ZONE_ID_put_handler':
+./apps/ipso-app-fw/device-resource.c:479:67: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_UNSIGNED_INT, "Zone_ID", RES_ZONE_ID_VALUE,device_zone_id_set)
+                                                                   ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:133:35: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_ZONE_ID_RESOURCE REST_ACTUATOR
+                                   ^
+./apps/ipso-app-fw/device-resource.c:475:1: note: in expansion of macro 'REST_RES_ZONE_ID_RESOURCE'
+ REST_RES_ZONE_ID_RESOURCE(ZONE_ID,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(uint16_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_PAN_ID_put_handler':
+./apps/ipso-app-fw/device-resource.c:486:65: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_UNSIGNED_INT, "PAN_ID", RES_PAN_ID_VALUE,device_pan_id_set)
+                                                                 ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:142:34: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_PAN_ID_RESOURCE REST_ACTUATOR
+                                  ^
+./apps/ipso-app-fw/device-resource.c:482:1: note: in expansion of macro 'REST_RES_PAN_ID_RESOURCE'
+ REST_RES_PAN_ID_RESOURCE(PAN_ID,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(uint16_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_node_latitude_put_handler':
+./apps/ipso-app-fw/device-resource.c:499:74: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_STRING, "Node_Latitude", RES_NODE_LATITUDE_VALUE, device_node_latitude_set)
+                                                                          ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:158:41: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_NODE_LATITUDE_RESOURCE REST_ACTUATOR
+                                         ^
+./apps/ipso-app-fw/device-resource.c:495:1: note: in expansion of macro 'REST_RES_NODE_LATITUDE_RESOURCE'
+ REST_RES_NODE_LATITUDE_RESOURCE(node_latitude,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(char *, uint8_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_node_longitude_put_handler':
+./apps/ipso-app-fw/device-resource.c:506:76: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_STRING, "Node_Longitude", RES_NODE_LONGITUDE_VALUE, device_node_longitude_set)
+                                                                            ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:166:42: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_NODE_LONGITUDE_RESOURCE REST_ACTUATOR
+                                          ^
+./apps/ipso-app-fw/device-resource.c:502:1: note: in expansion of macro 'REST_RES_NODE_LONGITUDE_RESOURCE'
+ REST_RES_NODE_LONGITUDE_RESOURCE(node_longitude,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(char *, uint8_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_custom_command_put_handler':
+./apps/ipso-app-fw/device-resource.c:513:87: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_UNSIGNED_INT, "Custom_Command", RES_NODE_CUSTOM_COMMAND_VALUE, device_custom_command_set)
+                                                                                       ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:176:47: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_NODE_CUSTOM_COMMAND_RESOURCE REST_ACTUATOR
+                                               ^
+./apps/ipso-app-fw/device-resource.c:509:1: note: in expansion of macro 'REST_RES_NODE_CUSTOM_COMMAND_RESOURCE'
+ REST_RES_NODE_CUSTOM_COMMAND_RESOURCE(custom_command,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(uint32_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+./apps/ipso-app-fw/device-resource.c: In function 'resource_custom_node_edit_put_handler':
+./apps/ipso-app-fw/device-resource.c:520:91: warning: passing argument 3 of 'simple_resource_set_handler' from incompatible pointer type
+     COAP_RESOURCE_TYPE_UNSIGNED_INT, "Custom_Node_Edit", RES_NODE_CUSTOM_NODE_EDIT_VALUE, device_custom_node_edit_set)
+                                                                                           ^
+./apps/coap/coap-common.h:242:66: note: in definition of macro 'REST_RESOURCE_PUT_HANDLER'
+   simple_resource_set_handler(resource_format_type, resource_id, resource_actuator, request, response, buffer, preferred_size, offset); \
+                                                                  ^
+./apps/ipso-app-fw/device-resource.c:185:49: note: in expansion of macro 'REST_ACTUATOR'
+ #define REST_RES_NODE_CUSTOM_NODE_EDIT_RESOURCE REST_ACTUATOR
+                                                 ^
+./apps/ipso-app-fw/device-resource.c:516:1: note: in expansion of macro 'REST_RES_NODE_CUSTOM_NODE_EDIT_RESOURCE'
+ REST_RES_NODE_CUSTOM_NODE_EDIT_RESOURCE(custom_node_edit,
+ ^
+./apps/coap/coap-common.h:172:1: note: expected 'int (*)(uint32_t,  uint32_t)' but argument is of type 'int (*)(uint32_t)'
+ simple_resource_set_handler(int resource_type, char const * resource_name, int(*resource_set)(uint32_t value, uint32_t len), void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+ ^
+make: *** [obj_cc2538dk/device-resource.o] Error 1
+rm obj_cc2538dk/startup-gcc.o

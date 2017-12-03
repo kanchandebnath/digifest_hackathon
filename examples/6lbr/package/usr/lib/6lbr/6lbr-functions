@@ -1,0 +1,148 @@
+################################################################################
+# Validate parameters and set default values
+
+config_default () {
+
+# Global directories definition
+
+if [ "$ETC_6LBR" = "" ]; then
+	ETC_6LBR=/etc/6lbr
+fi
+
+if [ "$LIB_6LBR" = "" ]; then
+	if [ "$BASH_SOURCE" != "" ]; then
+		LIB_6LBR=`dirname $BASH_SOURCE`
+	else
+		LIB_6LBR=/usr/lib/6lbr
+	fi
+fi
+
+
+if [ "$BIN_6LBR" = "" ]; then
+	BIN_6LBR=$LIB_6LBR/bin
+fi
+
+if [ "$RUN_6LBR" = "" ]; then
+	RUN_6LBR=/var/log
+fi
+
+if [ "$LOG_6LBR" = "" ]; then
+	LOG_6LBR=/var/log
+fi
+
+# NVM and mode
+
+if [ "$NVM" = "" ]; then
+	NVM=$ETC_6LBR/nvm.dat
+fi
+
+if [ "$CONFIG" = "" ]; then
+	CONFIG=$ETC_6LBR/nvm.conf
+fi
+
+if [ "$MODE" = "" ]; then
+	MODE="ROUTER"
+fi
+
+# Ethernet interface
+
+if [ "$RAW_ETH" = "" ]; then
+	RAW_ETH="0"
+fi
+
+if [ "$DEV_ETH" = "" ]; then
+	DEV_ETH="eth0"
+fi
+
+if [ "$RAW_ETH_FCS" = "" ]; then
+	RAW_ETH_FCS=0
+fi
+
+# TAP interface
+
+if [ "$DEV_TAP" = "" ]; then
+	DEV_TAP="tap0"
+fi
+
+if [ "$DEV_TAP_MAC" = "" ]; then
+	DEV_TAP_MAC="02:a:b:c:d:e"
+fi
+
+# Bridge
+
+if [ "$DEV_BRIDGE" = "" ]; then
+	DEV_BRIDGE="br0"
+fi
+
+if [ "$BRIDGE" = "" ]; then
+	BRIDGE="1"
+fi
+
+if [ "$CREATE_BRIDGE" != "0" -a "$CREATE_BRIDGE" != "LAZY" -a "$CREATE_BRIDGE" != "MANUAL" -a "$CREATE_BRIDGE" != "6LBR" ]; then
+	CREATE_BRIDGE="1"
+fi
+
+if [ "$ETH_JOIN_BRIDGE" = "" ]; then
+	ETH_JOIN_BRIDGE="1"
+fi
+
+if [ "$BRIDGE_DISABLE_SNOOPING" = "" ]; then
+	BRIDGE_DISABLE_SNOOPING="1"
+fi
+
+if [ "$ITF_AUTOCONF" = "" ]; then
+	ITF_AUTOCONF="1"
+fi
+
+# Radio configuration
+
+# No default values as platform are too different
+
+if [ "$DEV_RADIO" != "" -a "$SOCK_RADIO" != "" ]; then
+	echo WARNING: $CFG declares both DEV_RADIO and SOCK_RADIO. Using SOCK_RADIO=$SOCK_RADIO
+fi
+
+# Global configuration and setup scripts
+
+if [ "$WWW_6LBR" = "" ]; then
+	WWW_6LBR=$LIB_6LBR/www
+fi
+
+if [ "$PLUGINS_6LBR" = "" ]; then
+	PLUGINS_6LBR=$LIB_6LBR/plugins
+fi
+if [ "$IFUP" = "" ]; then
+	IFUP=$LIB_6LBR/6lbr-ifup
+fi
+
+if [ "$IFDOWN" = "" ]; then
+	IFDOWN=$LIB_6LBR/6lbr-ifdown
+fi
+
+if [ "$LOG_6LBR_OUT" = "" ]; then
+	LOG_6LBR_OUT=$LOG_6LBR/6lbr.log
+fi
+
+if [ "$LOG_6LBR_ERR" = "" ]; then
+	LOG_6LBR_ERR=$LOG_6LBR/6lbr.err
+fi
+
+if [ "$IP_CONFIG_FILE" = "" ]; then
+	IP_CONFIG_FILE=$RUN_6LBR/6lbr.ip
+fi
+
+# Reliability
+if [ "$STOP_AFTER_CRASH" = "" ]; then
+	STOP_AFTER_CRASH="0"
+fi
+
+if [ "$WATCHDOG_INTERVAL" = "" ]; then
+	WATCHDOG_INTERVAL="60"
+fi
+
+if [ "$WATCHDOG_FILE" = "" ]; then
+	WATCHDOG_FILE="$RUN_6LBR/6lbr.timestamp"
+fi
+
+# function config_default
+}

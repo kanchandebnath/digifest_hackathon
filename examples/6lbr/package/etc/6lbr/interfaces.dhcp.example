@@ -1,0 +1,19 @@
+auto lo
+
+iface lo inet loopback
+
+iface eth0 inet static
+address 0.0.0.0
+
+auto br0
+iface br0 inet dhcp
+    bridge_ports eth0
+    bridge_stp off
+    up echo 0 > /sys/devices/virtual/net/br0/bridge/multicast_snooping
+    post-up ip link set br0 address `ip link show eth0 | grep ether | awk '{print $2}'`
+
+allow-hotplug wlan0
+iface wlan0 inet manual
+wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+
+iface default inet dhcp
